@@ -3,7 +3,7 @@
 require 'serialport' # use Kernel::require on windows, works better 
 
 #params for serial port
-port_str = "/dev/ttyACM4"  #may be different for you
+port_str = "/dev/ttyACM0"  #may be different for you
 baud_rate = 9600
 data_bits = 8
 stop_bits = 1
@@ -19,4 +19,5 @@ loop do
   exit(0) if (cols == "q")
   data = [0x00, cols.to_i]
   sp.write(data.pack("CC"))
+  puts sp.read.to_i
 end
